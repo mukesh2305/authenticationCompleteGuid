@@ -1,0 +1,41 @@
+ID Token - Required to be in the format of JWT. 
+(ID comes from openID Connect (an open standard for decentralized authentication))
+
+JWT consists of  3 parts ->
+--------------------------------------
+1. header =>
+    1. algorithm = "HS256"
+    2. type = JWT
+2. payload/body -> 
+----- This are registered Claims
+    1. sub property  - unique identifier for user
+    2. audience  - who intended receiver is used this id token.
+    3. issuer - who issue this token (token created person)
+    4. name - of a user (eg : login use or register user )
+    5. expiration time
+    6. iat - Token  issue Time
+3. signature =>
+    - Secret key 
+
+
+ID Token => 
+-------------
+ -   have the information about user name, user profile everything that is showing in    dashboard in the web application.
+
+-  all the information from the ID Token are receive by application that is user login into.
+-  id Token  are strictly used for authentication.
+-  id Token used to display all the information on the app.
+-  id Token are NOT meant for authorization.
+-  id Token should NOT be sent to an API.
+- id Token do NOT have authorization information. so basically be useless to send to an api anyway.
+
+
+Access Token => 
+---------------------
+   -  access Token are specifically allow to access resources eg: file, database or api 
+   - (OAuth2.0)(Allow an application to access specific resources on behalf of a user)
+
+- Access tokens are NOT used for authentication.
+- Access Tokens do NOT guarantee that a user is logged in or NOT.
+- Access Token are used for authorization.
+

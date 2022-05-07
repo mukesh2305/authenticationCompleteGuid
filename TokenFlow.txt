@@ -1,0 +1,49 @@
+                   TOKEN FLOW
+        ------------------------------------
+        
+        reigster/login request(with username  & password)
+         ------------------------------------------->     
+         pair: Accesss - Token & Refresh-Token(if username and password are valid than server send this 2 Tokens)
+         <--------------------------------------------   
+
+
+
+         Access Protected Route (with Access-Token as Autorization Header)
+CLIENT   ----------------------------------------------->                      SERVER    
+          Token is Valid(Response if access Token valid)
+         <-----------------------------------------------
+              If Not valid -> then -> 401 Forbidden(jwt is expired)
+
+
+              then client send request
+                     |
+                     |
+                    \ /
+         Refresh Token Route(with Refresh token in request body)
+        ------------------------------------------------------>
+pair: new Accesss - Token & Refresh-Token(if username and password are valid than server send this 2 Tokens)
+        <------------------------------------------------------
+         If Not valid/Blacklisted  -> then -> 403 Forbidden(Unauthorized)
+
+
+=======================================================
+(Refresh Token are used to Refresh Access Token because Access Token has 1 hour of validity or expiry Time so Refresh Token after 1hr refresh the Access Token and generate new pair of access Token and refresh Token)
+=> After succesful authentication we send back two Tokens back to client.
+   contaning the client id as payload in the audience claim.
+        1 Access Token (validity : 1 hour)
+        2 Refresh Token (valisity : 1 year or so)
+=> Access Tokens are used to access protected routes.
+=> Rfresh tokens are used to get a New Pair of Access Tokens ans Refresh token.
+=> The previous refresh token is Blacklisted by overwriting the old refresh 
+   Token with the new one in redis(or database).
+=> To logout, we simply remove the access token & refresh token from client side,
+   and we remove refresh toke from redis(or database) as well
+
+
+
+==============================================
+NPM PACKAGES THAT WE ARE USING IN THIS APP
+===========================================
+express  brcypt  mongoose  dotenv  jsonwebtoken 
+http-errors  redis  morgan  nodemon 
+@hapi/joi  

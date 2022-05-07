@@ -1,0 +1,42 @@
+GET http://localhost:3000/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTE2NjY0OTIsImV4cCI6MTY1MTY2NjUyMiwiYXVkIjoiNjI3MjE1Zjk2M2IwYmE1Nzg1MTA3NDk5IiwiaXNzIjoicGljdHVycGFnZS5jb20ifQ.v7J3QfZI9Jt03QkP63Oo00FA_DEGp5mIX4AxJ6LnYzE
+
+
+###Login Route 
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "email": "mahesh@gmail.com",
+    "password": "1234"
+}
+
+### Register Route
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+
+{
+    "email": "new1@gmail.com",
+    "password": "1234"
+}
+
+### Refresh Token Route
+POST http://localhost:3000/auth/refresh-token
+Content-Type: application/json
+
+{
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTE2NzA2MjQsImV4cCI6MTY4MzIyODIyNCwiYXVkIjoiNjI3MjE1Zjk2M2IwYmE1Nzg1MTA3NDk5IiwiaXNzIjoicGljdHVycGFnZS5jb20ifQ.TmZ0EMXPSjdp8ZMIjUzzkT-GKgOpxDArIUwe8JCo2uA"
+
+}
+
+### Logout Route
+DELETE http://localhost:3000/auth/logout
+Content-Type: application/json
+
+
+{
+    "refreshToken" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTE2NzA2NDEsImV4cCI6MTY4MzIyODI0MSwiYXVkIjoiNjI3MjE1Zjk2M2IwYmE1Nzg1MTA3NDk5IiwiaXNzIjoicGljdHVycGFnZS5jb20ifQ.GkR_72sGTH3R0y29MdDFzb2rcq4Dm2XJBklIbjP3kEM" 
+}
+
+
